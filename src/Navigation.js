@@ -8,6 +8,7 @@ import ByCategory from "./components/discover/ByCategory";
 
 const Navbar = () => {
   let favourite = JSON.parse(localStorage.getItem("meals"));
+
   return (
     <Router>
       <Switch>

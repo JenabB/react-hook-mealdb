@@ -5,6 +5,18 @@
 .category-container::-webkit-scrollbar {
   width: 0;
 }
+.rec-container {
+  position: relative;
+}
+
+.shadow-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, rgb(27 27 27 / 85%), transparent);
+}
 
 nav {
   width: 100%;

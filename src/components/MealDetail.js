@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "./hooks/GlobalState";
 import { Link, useHistory } from "react-router-dom";
 import ReactPlayer from "react-player";
+import { Helmet } from "react-helmet";
 
 const MealDetail = ({ match }) => {
-  const [meals, setMeal] = useState([]);
+  const [meals, setMeals] = useState([]);
 
   const { addMealToFavourite, removeMealFromFavourite } = useContext(
     GlobalContext
@@ -22,7 +23,7 @@ const MealDetail = ({ match }) => {
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal_id}`)
       .then((response) => response.json())
-      .then((data) => setMeal(data.meals[0]))
+      .then((data) => setMeals(data.meals[0]))
       .catch((error) => console.log(error));
   }, [meal_id]);
 
@@ -31,6 +32,10 @@ const MealDetail = ({ match }) => {
       className="h-vh bg-white pb-10"
       style={{ backgroundColor: "rgb(249,248,253)" }}
     >
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{meals.strMeal}</title>
+      </Helmet>
       <button
         className="back-button bg-green-400 text-white px-2 py-1 rounded-lg"
         onClick={goBack}

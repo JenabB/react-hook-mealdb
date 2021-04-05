@@ -1,13 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 const Favourite = () => {
   let favourite = JSON.parse(localStorage.getItem("meals"));
   console.log(favourite);
   return (
     <div
-      className="w-app h-vh px-2 pb-4"
+      className="w-app bg-white mx-auto pb-14 h-vh"
       style={{ backgroundColor: "rgb(249,248,253)" }}
     >
+      <Helmet>
+        <title>Favourite</title>
+      </Helmet>
       <div className="grid grid-cols-2">
         {favourite.map((meal) => (
           <div key={meal.idMeal} className="m-2 bg-white">

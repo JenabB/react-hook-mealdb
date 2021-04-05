@@ -14,18 +14,15 @@ const RecommendedItem = () => {
       {meals.map((meal) => (
         <Link to={`recipe/${meal.idMeal}`}>
           <div>
-            <div
-              key={meal.idMeal}
-              className="w-card h-card shadow-lg m-2 bg-white rounded-lg "
-              style={{
-                backgroundImage: `url(${meal.strMealThumb})`,
-                backgroundSize: "cover",
-              }}
-            >
-              <div className="recipe-meta p-4">
-                <h1 className="text-lg text-white font-black">
-                  {meal.strMeal}
-                </h1>
+            <div class="rec-container w-card m-2">
+              <div class="shadow-top rounded-lg"></div>
+              <h1 className="absolute text-white p-2">{meal.strMeal}</h1>
+              <div class="img-container">
+                <img
+                  src={meal.strMealThumb}
+                  alt="meal"
+                  className="rounded-lg"
+                />
               </div>
             </div>
           </div>
