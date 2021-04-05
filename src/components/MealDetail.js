@@ -22,7 +22,7 @@ const MealDetail = ({ match }) => {
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal_id}`)
       .then((response) => response.json())
-      .then((data) => (setMeal(data.meals[0]), console.log(data.meals[0])))
+      .then((data) => setMeal(data.meals[0]))
       .catch((error) => console.log(error));
   }, [meal_id]);
 
