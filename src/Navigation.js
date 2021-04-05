@@ -7,8 +7,6 @@ import MealDetail from "./components/MealDetail";
 import ByCategory from "./components/discover/ByCategory";
 
 const Navbar = () => {
-  let favourite = JSON.parse(localStorage.getItem("meals"));
-
   return (
     <Router>
       <Switch>
@@ -29,7 +27,7 @@ const Navbar = () => {
             <Link to="/discover">Discover</Link>
           </div>
           <div className="m-4">
-            <Link to="/favourite">Favourite ({favourite.length})</Link>
+            <Link to="/favourite">Favourite</Link>
           </div>
         </div>
       </nav>
