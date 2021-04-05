@@ -6,7 +6,7 @@ const ForYou = () => {
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood`)
       .then((response) => response.json())
-      .then((data) => (setMeals(data.meals), console.log(data.meals)))
+      .then((data) => setMeals(data.meals))
       .catch((error) => console.log(error));
   }, []);
 
