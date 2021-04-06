@@ -29,7 +29,7 @@ const MealDetail = ({ match }) => {
 
   return (
     <div
-      className="h-vh bg-white pb-10"
+      className="w-app bg-white mx-auto pb-14"
       style={{ backgroundColor: "rgb(249,248,253)" }}
     >
       <Helmet>
@@ -57,7 +57,7 @@ const MealDetail = ({ match }) => {
         Add
       </button>
 
-      <div className="pb-14">
+      <div className="w-app bg-white mx-auto pb-14">
         <img src={meals.strMealThumb} alt="meal thumb" loading="lazy" />
         <div className="p-5">
           <h1 className="text-xl font-bold text-green-600">{meals.strMeal}</h1>

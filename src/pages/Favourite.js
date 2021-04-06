@@ -13,7 +13,7 @@ const Favourite = () => {
       <Helmet>
         <title>Favourite</title>
       </Helmet>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 lg:grid-cols-4">
         {favourite.map((meal) => (
           <div key={meal.idMeal} className="m-2 bg-white">
             <Link to={`recipe/${meal.idMeal}`}>
