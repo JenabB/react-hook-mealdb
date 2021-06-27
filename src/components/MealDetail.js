@@ -29,8 +29,8 @@ const MealDetail = ({ match }) => {
 
   return (
     <div
-      className="w-app bg-white mx-auto pb-14"
-      style={{ backgroundColor: "rgb(249,248,253)" }}
+    className="lg:w-app w-full bg-white mx-auto pb-14"
+    style={{ backgroundColor: "rgb(249,248,253)" }}
     >
       <Helmet>
         <meta charSet="utf-8" />
@@ -57,7 +57,7 @@ const MealDetail = ({ match }) => {
         Add
       </button>
 
-      <div className="w-app bg-white mx-auto pb-14">
+      <div className="lg:w-app w-full bg-white mx-auto pb-14">
         <img src={meals.strMealThumb} alt="meal thumb" loading="lazy" />
         <div className="p-5">
           <h1 className="text-xl font-bold text-green-600">{meals.strMeal}</h1>

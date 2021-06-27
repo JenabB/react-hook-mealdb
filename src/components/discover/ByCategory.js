@@ -17,8 +17,9 @@ const ByCategory = ({ match }) => {
   }, [category_id]);
 
   return (
-    <div>
-      <div className="grid grid-cols-2">
+    <div  className="lg:w-app w-full bg-white mx-auto pb-14"
+    style={{ backgroundColor: "rgb(249,248,253)" }}>
+      <div className="grid lg:grid-cols-4 grid-cols-2">
         <button
           className="back-button bg-green-400 text-white px-2 py-1 rounded-lg"
           onClick={goBack}

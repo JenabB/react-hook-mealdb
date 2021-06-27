@@ -3,7 +3,7 @@ import ForYou from './ForYou';
 import { Link } from 'react-router-dom';
 
 const Search = () => {
-  const [search, setSearch] = useState('Arrabiata');
+  const [search, setSearch] = useState('');
   const [recipe, setRecipe] = useState([]);
 
   const handleChangeSearch = (e) => {
