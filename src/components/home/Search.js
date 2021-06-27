@@ -1,32 +1,25 @@
-import React, { useState, useEffect } from "react";
-import ForYou from "./ForYou";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import ForYou from './ForYou';
+import { Link } from 'react-router-dom';
 
 const Search = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('Arrabiata');
   const [recipe, setRecipe] = useState([]);
-  const [url, setUrl] = useState(
-    "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"
-  );
 
   const handleChangeSearch = (e) => {
     setSearch(e.target.value);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
-  };
 
   useEffect(() => {
-    fetch(url)
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
       .then((response) => response.json())
       .then((data) => setRecipe(data.meals[0]))
       .catch((error) => console.log(error));
-  }, [url]);
+  }, [search]);
 
   return (
     <div className="p-4 text-center">
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           type="search"
           className="bg-purple-100 px-3 py-2 shadow rounded border-0"
