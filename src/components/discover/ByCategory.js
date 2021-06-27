@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 const ByCategory = ({ match }) => {
   const [meals, setMeals] = useState([]);
@@ -17,8 +17,10 @@ const ByCategory = ({ match }) => {
   }, [category_id]);
 
   return (
-    <div  className="lg:w-app w-full bg-white mx-auto pb-14"
-    style={{ backgroundColor: "rgb(249,248,253)" }}>
+    <div
+      className="lg:w-app w-full bg-white mx-auto pb-14"
+      style={{ backgroundColor: 'rgb(249,248,253)' }}
+    >
       <div className="grid lg:grid-cols-4 grid-cols-2">
         <button
           className="back-button bg-green-400 text-white px-2 py-1 rounded-lg"
@@ -28,7 +30,7 @@ const ByCategory = ({ match }) => {
         </button>
         {meals.map((recipe) => (
           <div key={recipe.idMeal}>
-            <Link to={`recipe/${recipe.idMeal}`}>
+            <Link to={`/recipe/${recipe.idMeal}`}>
               <div className="rounded shadow-lg m-1 bg-white">
                 <img
                   className="rounded-t-lg"
