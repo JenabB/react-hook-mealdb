@@ -34,7 +34,7 @@ const Search = () => {
       <div className="search-container">
         <div className="mt-4">
           {search ? (
-            <div className="grid grid-cols-4">
+            <div className="grid grid-cols-4 sm:grid-cols-3">
               {recipe ? (
                 recipe.map((meal) => (
                   <Link to={`recipe/${meal.idMeal}`}>

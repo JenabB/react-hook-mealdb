@@ -1,21 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "./hooks/GlobalState";
-import { Link, useHistory } from "react-router-dom";
-import ReactPlayer from "react-player";
-import { Helmet } from "react-helmet";
+import React, { useState, useEffect, useContext } from 'react';
+import { GlobalContext } from './hooks/GlobalState';
+import { Link, useHistory } from 'react-router-dom';
+import ReactPlayer from 'react-player';
+import { Helmet } from 'react-helmet';
 
 const MealDetail = ({ match }) => {
   const [meals, setMeals] = useState([]);
 
-  const { addMealToFavourite, removeMealFromFavourite } = useContext(
-    GlobalContext
-  );
+  const { addMealToFavourite, removeMealFromFavourite } =
+    useContext(GlobalContext);
 
   let meal_id = match.params.id;
   let history = useHistory();
 
   let idMeal = meals.idMeal;
-  console.log(idMeal);
   function goBack() {
     history.goBack();
   }
@@ -29,29 +27,29 @@ const MealDetail = ({ match }) => {
 
   return (
     <div
-    className="lg:w-app w-full bg-white mx-auto pb-14"
-    style={{ backgroundColor: "rgb(249,248,253)" }}
+      className="lg:w-app w-full bg-white mx-auto pb-14"
+      style={{ backgroundColor: 'rgb(249,248,253)' }}
     >
       <Helmet>
         <meta charSet="utf-8" />
         <title>{meals.strMeal}</title>
       </Helmet>
       <button
-        className="back-button bg-green-400 text-white px-2 py-1 rounded-lg"
+        className="fixed top-20 left-3 bg-green-400 text-white px-2 py-1 rounded-lg"
         onClick={goBack}
       >
         Back
       </button>
 
       <button
-        className="remove-button bg-red-400 text-white text-center px-2 py-1 rounded-lg"
+        className="fixed top-20 right-3 bg-red-400 text-white text-center px-2 py-1 rounded-lg"
         onClick={() => removeMealFromFavourite(idMeal)}
       >
         Remove
       </button>
 
       <button
-        className="add-button text-white bg-green-500 text-center px-2 py-1 rounded-lg"
+        className="fixed top-20 right-20 text-white bg-green-500 text-center px-2 py-1 rounded-lg"
         onClick={() => addMealToFavourite(meals)}
       >
         Add
