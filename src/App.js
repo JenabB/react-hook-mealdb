@@ -5,9 +5,7 @@ import Navigation from "./Navigation";
 function App() {
   return (
     <GlobalProvider>
-      <div className="App bg-gray-100">
-        <Navigation />
-      </div>
+      <Navigation />
     </GlobalProvider>
   );
 }

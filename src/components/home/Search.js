@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import ForYou from './ForYou';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import ForYou from "./ForYou";
+import { Link } from "react-router-dom";
 
 const Search = () => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [recipe, setRecipe] = useState([]);
 
   const handleChangeSearch = (e) => {
@@ -23,7 +23,7 @@ const Search = () => {
         <form>
           <input
             type="search"
-            className="bg-purple-100 px-3 py-2 shadow rounded border-0"
+            className="bg-purple-100 px-3 py-2 shadow rounded-full border-0"
             value={search}
             placeholder="search for meal"
             onChange={handleChangeSearch}

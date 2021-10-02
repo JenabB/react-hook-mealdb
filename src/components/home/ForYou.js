@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import MealResult from '../MealResult';
+import React, { useState, useEffect } from "react";
+import MealResult from "../MealResult";
 
 const ForYou = () => {
   const [meals, setMeals] = useState([]);
@@ -12,7 +12,7 @@ const ForYou = () => {
   }, []);
 
   return (
-    <div className="grid lg:grid-cols-4 grid-cols-3">
+    <div className="grid">
       {meals.map((meal) => (
         <div key={meal.idMeal}>
           <MealResult meal={meal} />

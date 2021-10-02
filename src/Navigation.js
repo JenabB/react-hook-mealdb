@@ -5,7 +5,7 @@ import Discover from "./pages/Discover";
 import Favourite from "./pages/Favourite";
 import MealDetail from "./components/MealDetail";
 import ByCategory from "./components/discover/ByCategory";
-import Header from './components/Header';
+import Header from "./components/Header";
 
 const Navbar = () => {
   return (
@@ -20,19 +20,29 @@ const Navbar = () => {
         <Route path="/category/:strCategory" component={ByCategory} />
       </Switch>
 
-      <nav className="fixed bottom-0 bg-green-400 shadow-md text-white font-bold">
-        <div className="flex justify-center">
-          <div className="m-4">
-            <Link to="/">Home</Link>
+      <div
+        style={{ width: "100%" }}
+        className="fixed bottom-0 py-2 flex justify-center bg-yellow-400"
+      >
+        <Link to="/">
+          <div className="text-center mx-4">
+            <h1 className="material-icons">home</h1>
+            <h1>Home</h1>
           </div>
-          <div className="m-4">
-            <Link to="/discover">Discover</Link>
+        </Link>
+        <Link to="/discover">
+          <div className="text-center mx-4">
+            <h1 className="material-icons">travel_explore</h1>
+            <h1>Discover</h1>
           </div>
-          <div className="m-4">
-            <Link to="/favourite">Favourite</Link>
+        </Link>
+        <Link to="/favourite">
+          <div className="text-center mx-4">
+            <h1 className="material-icons">favorite</h1>
+            <h1>Favorites</h1>
           </div>
-        </div>
-      </nav>
+        </Link>
+      </div>
     </Router>
   );
 };
