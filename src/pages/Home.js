@@ -1,10 +1,11 @@
 import React from "react";
-import Search from "../components/home/Search";
 import Recommended from "../components/home/Recommended";
 import Category from "../components/home/Category";
 import Footer from "../components/Footer";
 
 import { Helmet } from "react-helmet";
+import Header from "../components/Header";
+import ForYou from "../components/home/ForYou";
 
 const Home = () => {
   return (
@@ -16,9 +17,10 @@ const Home = () => {
         <meta charSet="utf-8" />
         <title>Home</title>
       </Helmet>
+      <Header />
       <Recommended />
       <Category />
-      <Search />
+      <ForYou />
       <Footer />
     </div>
   );

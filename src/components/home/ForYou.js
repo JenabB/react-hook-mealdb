@@ -12,11 +12,9 @@ const ForYou = () => {
   }, []);
 
   return (
-    <div className="grid">
-      {meals.map((meal) => (
-        <div key={meal.idMeal}>
-          <MealResult meal={meal} />
-        </div>
+    <div className="grid lg:grid-cols-3 grid-cols-2">
+      {meals.map((meal, i) => (
+        <MealResult key={i} meal={meal} />
       ))}
     </div>
   );

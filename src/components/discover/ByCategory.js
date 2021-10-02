@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import AppBarWithBack from "../AppBarWithBack";
 
 const ByCategory = ({ match }) => {
   const [meals, setMeals] = useState([]);
   let category_id = match.params.strCategory;
-  let history = useHistory();
-  function goBack() {
-    history.goBack();
-  }
-
+  console.log(meals);
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category_id}`)
       .then((response) => response.json())
@@ -19,15 +16,10 @@ const ByCategory = ({ match }) => {
   return (
     <div
       className="lg:w-app w-full bg-white mx-auto pb-14"
-      style={{ backgroundColor: 'rgb(249,248,253)' }}
+      style={{ backgroundColor: "rgb(249,248,253)" }}
     >
+      <AppBarWithBack />
       <div className="grid lg:grid-cols-4 grid-cols-2">
-        <button
-          className="back-button bg-green-400 text-white px-2 py-1 rounded-lg"
-          onClick={goBack}
-        >
-          Back
-        </button>
         {meals.map((recipe) => (
           <div key={recipe.idMeal}>
             <Link to={`/recipe/${recipe.idMeal}`}>
@@ -40,12 +32,6 @@ const ByCategory = ({ match }) => {
                 />
                 <div className="recipe-information px-2 py-4">
                   <div className="text-sm truncate">{recipe.strMeal}</div>
-                  <p className="text-gray-700 truncate overflow-clip overflow-hidden h-2/4 text-base">
-                    {recipe.strArea}
-                  </p>
-                  <p className="text-gray-700 truncate overflow-clip overflow-hidden h-2/4 text-base">
-                    {recipe.strCategory}
-                  </p>
                 </div>
               </div>
             </Link>

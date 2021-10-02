@@ -5,12 +5,10 @@ import Discover from "./pages/Discover";
 import Favourite from "./pages/Favourite";
 import MealDetail from "./components/MealDetail";
 import ByCategory from "./components/discover/ByCategory";
-import Header from "./components/Header";
 
 const Navbar = () => {
   return (
     <Router>
-      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/discover" component={Discover} />

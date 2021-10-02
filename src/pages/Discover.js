@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import Search from "../components/home/Search";
 
 const Discover = () => {
   return (
@@ -7,7 +8,7 @@ const Discover = () => {
       <Helmet>
         <title>Discover</title>
       </Helmet>
-      <h2>Discover</h2>
+      <Search />
     </div>
   );
 };
