@@ -65,7 +65,7 @@ const MealDetail = ({ match }) => {
           className="fixed top-20 right-5 bg-yellow-400 text-center px-2 py-1 rounded-lg"
           onClick={() => removeMealFromFavourite(idMeal)}
         >
-          <h1 className="material-icons">favorite_border</h1>
+          <h1 className="material-icons">favorite</h1>
         </motion.button>
       ) : (
         <motion.button
@@ -73,7 +73,7 @@ const MealDetail = ({ match }) => {
           className="fixed top-20 right-5 bg-yellow-400 text-center px-2 py-1 rounded-lg"
           onClick={() => addMealToFavourite(meal)}
         >
-          <h1 className="material-icons">favorite</h1>
+          <h1 className="material-icons">favorite_border</h1>
         </motion.button>
       )}
 
