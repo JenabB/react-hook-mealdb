@@ -4,7 +4,9 @@ export default (state, action) => {
     case "ADD_MEAL_TO_FAVOURITE":
       return {
         ...state,
-        meals: [action.payload, ...state.meals],
+        meals: state.meals.find((el) => el.idMeal === action.payload.idMeal)
+          ? state.meals
+          : [action.payload, ...state.meals],
       };
     case "REMOVE_MEAL_FROM_FAVOURITE":
       return {

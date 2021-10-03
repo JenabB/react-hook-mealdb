@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const MealResult = ({ meal }) => {
   return (
-    <div className="m-2">
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      className="m-2"
+    >
       <Link to={`recipe/${meal.idMeal}`}>
         <div className="rounded shadow-lg">
           <img src={meal.strMealThumb} alt="Meal" loading="lazy" />
@@ -18,7 +23,7 @@ const MealResult = ({ meal }) => {
           </div>
         </div>
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

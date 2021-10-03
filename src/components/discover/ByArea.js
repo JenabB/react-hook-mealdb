@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+//components
 import AppBarWithBack from "../AppBarWithBack";
 
-const ByCategory = ({ match }) => {
+const ByArea = ({ match }) => {
+  //state
   const [meals, setMeals] = useState([]);
-  let category_id = match.params.strCategory;
-  console.log(meals);
 
+  //get area by click
+  let area = match.params.strArea;
+
+  //get meals data by area
   useEffect(() => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category_id}`)
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`)
       .then((response) => response.json())
       .then((data) => setMeals(data.meals))
       .catch((error) => console.log(error));
-  }, [category_id]);
+  }, [area]);
 
   return (
     <div
@@ -21,7 +26,7 @@ const ByCategory = ({ match }) => {
     >
       <AppBarWithBack />
       <h1 className="text-center my-8">
-        Total {meals.length} meals with category {category_id}
+        Total {meals.length} meals in {area}
       </h1>
       <div className="grid lg:grid-cols-4 grid-cols-2">
         {meals.map((recipe) => (
@@ -46,4 +51,4 @@ const ByCategory = ({ match }) => {
   );
 };
 
-export default ByCategory;
+export default ByArea;

@@ -18,7 +18,10 @@ const Search = () => {
   }, [search]);
 
   return (
-    <div className="p-4">
+    <div>
+      <div className=" mb-4 bg-yellow-400 w-full p-4 text-center sticky top-0 z-10">
+        <h1>Discover</h1>
+      </div>
       <div className="text-center">
         <form>
           <input

@@ -1,17 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Favourite = () => {
-  let favorite = JSON.parse(localStorage.getItem('meals'));
+  let favorite = JSON.parse(localStorage.getItem("meals"));
+
   return (
     <div
       className="lg:w-app w-full bg-white mx-auto pb-14 h-vh"
-      style={{ backgroundColor: 'rgb(249,248,253)' }}
+      style={{ backgroundColor: "rgb(249,248,253)" }}
     >
       <Helmet>
         <title>Favourite</title>
       </Helmet>
+      <div className="bg-yellow-400 w-full p-4 text-center sticky top-0 z-10">
+        <h1>Favorites</h1>
+      </div>
       <div>
         {favorite.length !== 0 ? (
           <div className="grid grid-cols-2 lg:grid-cols-4">

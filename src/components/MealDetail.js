@@ -4,60 +4,86 @@ import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Helmet } from "react-helmet";
 import AppBarWithBack from "./AppBarWithBack";
+import { motion } from "framer-motion";
 
 const MealDetail = ({ match }) => {
-  const [meals, setMeals] = useState([]);
+  const [meal, setMeal] = useState([]);
 
-  const { addMealToFavourite, removeMealFromFavourite } =
+  const { meals, addMealToFavourite, removeMealFromFavourite } =
     useContext(GlobalContext);
 
   let meal_id = match.params.id;
 
-  let idMeal = meals.idMeal;
+  let idMeal = meal.idMeal;
 
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal_id}`)
       .then((response) => response.json())
-      .then((data) => setMeals(data.meals[0]))
+      .then((data) => setMeal(data.meals[0]))
       .catch((error) => console.log(error));
   }, [meal_id]);
 
+  const selected = meals.find((el) => el.idMeal === meal_id);
+
+  const isFavorited = selected ? true : false;
+
   return (
-    <div
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          scale: 0.8,
+          opacity: 0,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.4,
+          },
+        },
+      }}
       className="lg:w-app w-full bg-white mx-auto pb-14"
       style={{ backgroundColor: "rgb(249,248,253)" }}
     >
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{meals.strMeal}</title>
+        <title>{meal.strMeal}</title>
       </Helmet>
       <AppBarWithBack />
 
-      <button
-        className="fixed top-20 right-3 bg-red-400 text-white text-center px-2 py-1 rounded-lg"
-        onClick={() => removeMealFromFavourite(idMeal)}
-      >
-        Remove
-      </button>
-
-      <button
-        className="fixed top-20 right-20 bg-yellow-400 text-center px-2 py-1 rounded-lg"
-        onClick={() => addMealToFavourite(meals)}
-      >
-        <h1 className="material-icons">favorite</h1>
-      </button>
+      {isFavorited ? (
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          className="fixed top-20 right-5 bg-yellow-400 text-center px-2 py-1 rounded-lg"
+          onClick={() => removeMealFromFavourite(idMeal)}
+        >
+          <h1 className="material-icons">favorite_border</h1>
+        </motion.button>
+      ) : (
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          className="fixed top-20 right-5 bg-yellow-400 text-center px-2 py-1 rounded-lg"
+          onClick={() => addMealToFavourite(meal)}
+        >
+          <h1 className="material-icons">favorite</h1>
+        </motion.button>
+      )}
 
       <div className="lg:w-app w-full bg-white mx-auto pb-14">
-        <img src={meals.strMealThumb} alt="meal thumb" loading="lazy" />
+        <img src={meal.strMealThumb} alt="meal thumb" loading="lazy" />
         <div className="p-5">
-          <h1 className="text-xl font-bold text-green-600">{meals.strMeal}</h1>
+          <h1 className="text-xl font-bold">{meal.strMeal}</h1>
           <div className="mt-2 flex">
-            <h2 className="m-1 bg-blue-400 px-2 py-1 rounded-lg text-white">
-              {meals.strArea}
-            </h2>
-            <Link to={`/category/${meals.strCategory}`}>
+            <Link to={`/area/${meal.strArea}`}>
+              <h2 className="m-1 bg-blue-400 px-2 py-1 rounded-lg text-white">
+                {meal.strArea}
+              </h2>
+            </Link>
+            <Link to={`/category/${meal.strCategory}`}>
               <h3 className="m-1 bg-green-400 px-2 py-1 rounded-lg text-white">
-                {meals.strCategory}
+                {meal.strCategory}
               </h3>
             </Link>
           </div>
@@ -72,85 +98,85 @@ const MealDetail = ({ match }) => {
               </thead>
               <tbody>
                 <tr>
-                  <td>{meals.strIngredient1}</td>
-                  <td>{meals.strMeasure1}</td>
+                  <td>{meal.strIngredient1}</td>
+                  <td>{meal.strMeasure1}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient2}</td>
-                  <td>{meals.strMeasure2}</td>
+                  <td>{meal.strIngredient2}</td>
+                  <td>{meal.strMeasure2}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient3}</td>
-                  <td>{meals.strMeasure3}</td>
+                  <td>{meal.strIngredient3}</td>
+                  <td>{meal.strMeasure3}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient4}</td>
-                  <td>{meals.strMeasure4}</td>
+                  <td>{meal.strIngredient4}</td>
+                  <td>{meal.strMeasure4}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient5}</td>
-                  <td>{meals.strMeasure5}</td>
+                  <td>{meal.strIngredient5}</td>
+                  <td>{meal.strMeasure5}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient6}</td>
-                  <td>{meals.strMeasure6}</td>
+                  <td>{meal.strIngredient6}</td>
+                  <td>{meal.strMeasure6}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient7}</td>
-                  <td>{meals.strMeasure7}</td>
+                  <td>{meal.strIngredient7}</td>
+                  <td>{meal.strMeasure7}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient8}</td>
-                  <td>{meals.strMeasure8}</td>
+                  <td>{meal.strIngredient8}</td>
+                  <td>{meal.strMeasure8}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient9}</td>
-                  <td>{meals.strMeasure9}</td>
+                  <td>{meal.strIngredient9}</td>
+                  <td>{meal.strMeasure9}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient10}</td>
-                  <td>{meals.strMeasure10}</td>
+                  <td>{meal.strIngredient10}</td>
+                  <td>{meal.strMeasure10}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient11}</td>
-                  <td>{meals.strMeasure11}</td>
+                  <td>{meal.strIngredient11}</td>
+                  <td>{meal.strMeasure11}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient12}</td>
-                  <td>{meals.strMeasure12}</td>
+                  <td>{meal.strIngredient12}</td>
+                  <td>{meal.strMeasure12}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient13}</td>
-                  <td>{meals.strMeasure13}</td>
+                  <td>{meal.strIngredient13}</td>
+                  <td>{meal.strMeasure13}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient14}</td>
-                  <td>{meals.strMeasure14}</td>
+                  <td>{meal.strIngredient14}</td>
+                  <td>{meal.strMeasure14}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient15}</td>
-                  <td>{meals.strMeasure15}</td>
+                  <td>{meal.strIngredient15}</td>
+                  <td>{meal.strMeasure15}</td>
                 </tr>
                 <tr>
-                  <td>{meals.strIngredient16}</td>
-                  <td>{meals.strMeasure16}</td>
+                  <td>{meal.strIngredient16}</td>
+                  <td>{meal.strMeasure16}</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <p className="text-justify">{meals.strInstructions}</p>
+          <p className="text-justify">{meal.strInstructions}</p>
         </div>
         <div className="player-wrapper">
           <ReactPlayer
-            url={meals.strYoutube}
+            url={meal.strYoutube}
             className="react-player"
             width="100%"
             height="100%"
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

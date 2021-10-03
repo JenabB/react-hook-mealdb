@@ -5,6 +5,7 @@ import Discover from "./pages/Discover";
 import Favourite from "./pages/Favourite";
 import MealDetail from "./components/MealDetail";
 import ByCategory from "./components/discover/ByCategory";
+import ByArea from "./components/discover/ByArea";
 
 const Navbar = () => {
   return (
@@ -16,6 +17,7 @@ const Navbar = () => {
 
         <Route path="/recipe/:id" component={MealDetail} />
         <Route path="/category/:strCategory" component={ByCategory} />
+        <Route path="/area/:strArea" component={ByArea} />
       </Switch>
 
       <div
