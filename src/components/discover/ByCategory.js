@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
+//components
 import AppBarWithBack from "../AppBarWithBack";
+import MealResult from "./MealResult";
 
 const ByCategory = ({ match }) => {
   const [meals, setMeals] = useState([]);
   let category_id = match.params.strCategory;
-  console.log(meals);
 
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category_id}`)
@@ -24,22 +25,8 @@ const ByCategory = ({ match }) => {
         Total {meals.length} meals with category {category_id}
       </h1>
       <div className="grid lg:grid-cols-4 grid-cols-2">
-        {meals.map((recipe) => (
-          <div key={recipe.idMeal}>
-            <Link to={`/recipe/${recipe.idMeal}`}>
-              <div className="rounded shadow-lg m-1 bg-white">
-                <img
-                  className="rounded-t-lg"
-                  src={recipe.strMealThumb}
-                  alt="Meal"
-                  loading="lazy"
-                />
-                <div className="recipe-information px-2 py-4">
-                  <div className="text-sm truncate">{recipe.strMeal}</div>
-                </div>
-              </div>
-            </Link>
-          </div>
+        {meals.map((meal, i) => (
+          <MealResult meal={meal} key={i} />
         ))}
       </div>
     </div>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const RecommendedItem = () => {
   const [meals, setMeals] = useState([]);
+
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())

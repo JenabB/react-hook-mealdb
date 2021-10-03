@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ForYou from "./ForYou";
 import { Link } from "react-router-dom";
+
+//components
+import ForYou from "./ForYou";
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -37,7 +39,7 @@ const Search = () => {
       <div className="search-container">
         <div className="mt-4">
           {search ? (
-            <div className="grid grid-cols-4 sm:grid-cols-3">
+            <div className="grid grid-cols-3 sm:grid-cols-2">
               {recipe ? (
                 recipe.map((meal) => (
                   <Link to={`recipe/${meal.idMeal}`}>

@@ -1,4 +1,6 @@
 import React from "react";
+
+//components
 import RecommendedItem from "./RecommendedItem";
 
 const Recommended = () => {

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+//components
 import MealResult from "../MealResult";
 
 const ForYou = () => {

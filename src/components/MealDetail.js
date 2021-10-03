@@ -1,19 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "./hooks/GlobalState";
 import { Link } from "react-router-dom";
-import ReactPlayer from "react-player";
 import { Helmet } from "react-helmet";
-import AppBarWithBack from "./AppBarWithBack";
+
+//context
+import { GlobalContext } from "./hooks/GlobalState";
+
+//library
+import ReactPlayer from "react-player";
 import { motion } from "framer-motion";
 
-const MealDetail = ({ match }) => {
-  const [meal, setMeal] = useState([]);
+//components
+import AppBarWithBack from "./AppBarWithBack";
 
+const MealDetail = ({ match }) => {
+  //state
+  const [meal, setMeal] = useState([]);
   const { meals, addMealToFavourite, removeMealFromFavourite } =
     useContext(GlobalContext);
 
+  //id meal
   let meal_id = match.params.id;
-
   let idMeal = meal.idMeal;
 
   useEffect(() => {
@@ -23,8 +29,8 @@ const MealDetail = ({ match }) => {
       .catch((error) => console.log(error));
   }, [meal_id]);
 
+  // check if meal arleady favorite or not
   const selected = meals.find((el) => el.idMeal === meal_id);
-
   const isFavorited = selected ? true : false;
 
   return (

@@ -1,12 +1,15 @@
 import React from "react";
+
+//lib
+import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
+
+//components
 import Recommended from "../components/home/Recommended";
+import ForYou from "../components/home/ForYou";
+import Header from "../components/Header";
 import Category from "../components/home/Category";
 import Footer from "../components/Footer";
-
-import { Helmet } from "react-helmet";
-import Header from "../components/Header";
-import ForYou from "../components/home/ForYou";
-import { motion } from "framer-motion";
 
 const Home = () => {
   return (
@@ -36,7 +39,6 @@ const Home = () => {
       <Header />
       <Recommended />
       <Category />
-
       <ForYou />
       <Footer />
     </motion.div>
