@@ -47,7 +47,7 @@ const Favourite = () => {
           <div className="text-center py-40">
             <h1>No favorite yet</h1>
             <button className="bg-yellow-400 px-4 py-2 rounded-lg">
-              <Link to="/">Home</Link>
+              <Link to="/">Get one</Link>
             </button>
           </div>
         )}
